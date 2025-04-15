@@ -215,7 +215,7 @@ function endGame() {
     
     // Show end screen
     document.getElementById('end-screen').style.display = 'flex';
-    document.getElementById('final-score').textContent = `you collected ${score} present(s)!`;
+    document.getElementById('final-score').textContent = `you got ${score} present(s)! yay!!!!!`;
     document.getElementById('final-score').textContent += ` (fuck dem birches)`;
     
     // Add animation to birthday message
