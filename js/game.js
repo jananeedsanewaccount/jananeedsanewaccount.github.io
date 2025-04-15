@@ -24,8 +24,8 @@ let tree = {
     width: 50,
     height: 50,
     speed: 10,
-    direction: Math.random() * 2 * Math.PI, // Direction in radians (0 to 2 * PI)
-    directionChangeInterval: 680, // Time in ms to change direction
+    direction: Math.random() * 2 * Math.PI,
+    directionChangeInterval: 680, 
     lastDirectionChange: Date.now(),
     image: new Image()
 };
@@ -159,13 +159,11 @@ function startGame() {
     score = 0;
     timer = GAME_DURATION;
 
-    // Hide start screen
     document.getElementById('start-screen').style.display = 'none';
 
     // Create presents
     createPresents();
 
-    // Set the tree start time to the current time when the game starts
     treeStartTime = Date.now();
 
     // Start game loop
@@ -185,10 +183,8 @@ function startGame() {
     updateScore();
 }
 
-// Update tree position with delay logic
 function updateTreePosition() {
-    // Only update tree position after 1 second has passed
-    if (Date.now() - treeStartTime >= 400) {
+    if (Date.now() - treeStartTime >= 600) {
         const now = Date.now();
 
         // Change direction at intervals
