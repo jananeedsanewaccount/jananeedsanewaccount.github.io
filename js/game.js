@@ -16,6 +16,7 @@ let timer = GAME_DURATION;
 let gameState = 'start'; // start, playing, end
 let timerInterval;
 let highestScore = 0;
+let treeStartTime = null;  // This will be set when the game starts
 
 let tree = {
     x: Math.random() * GAME_WIDTH,
@@ -153,7 +154,6 @@ function createPresents() {
     }
 }
 
-// Start the game
 function startGame() {
     gameState = 'playing';
     score = 0;
@@ -165,13 +165,11 @@ function startGame() {
     // Create presents
     createPresents();
 
+    // Set the tree start time to the current time when the game starts
+    treeStartTime = Date.now();
+
     // Start game loop
     requestAnimationFrame(gameLoop);
-
-    // Delay tree movement by 1 second
-    setTimeout(function() {
-        treeMovementStarted = true;  // Flag to start tree movement
-    }, 1000);  // 1000 milliseconds = 1 second
 
     // Start timer
     timerInterval = setInterval(function() {
@@ -185,6 +183,30 @@ function startGame() {
 
     // Update UI
     updateScore();
+}
+
+// Update tree position with delay logic
+function updateTreePosition() {
+    // Only update tree position after 1 second has passed
+    if (Date.now() - treeStartTime >= 200) {
+        const now = Date.now();
+
+        // Change direction at intervals
+        if (now - tree.lastDirectionChange > tree.directionChangeInterval) {
+            tree.direction = Math.random() * 2 * Math.PI; // Random new direction
+            tree.lastDirectionChange = now;
+        }
+
+        // Update position based on the current direction
+        tree.x += Math.cos(tree.direction) * tree.speed;
+        tree.y += Math.sin(tree.direction) * tree.speed;
+
+        // Ensure the tree stays within the canvas boundaries
+        if (tree.x < 0) tree.x = 0;
+        if (tree.x + tree.width > GAME_WIDTH) tree.x = GAME_WIDTH - tree.width;
+        if (tree.y < 0) tree.y = 0;
+        if (tree.y + tree.height > GAME_HEIGHT) tree.y = GAME_HEIGHT - tree.height;
+    }
 }
 
 
@@ -333,29 +355,6 @@ function gameLoop() {
 
     // Continue game loop
     requestAnimationFrame(gameLoop);
-}
-
-
-// Move the tree randomly
-// Move the tree in a straight path, changing direction periodically
-function updateTreePosition() {
-    const now = Date.now();
-    
-    // Change direction at intervals
-    if (now - tree.lastDirectionChange > tree.directionChangeInterval) {
-        tree.direction = Math.random() * 2 * Math.PI; // Random new direction
-        tree.lastDirectionChange = now;
-    }
-
-    // Update position based on the current direction
-    tree.x += Math.cos(tree.direction) * tree.speed;
-    tree.y += Math.sin(tree.direction) * tree.speed;
-
-    // Ensure the tree stays within the canvas boundaries
-    if (tree.x < 0) tree.x = 0;
-    if (tree.x + tree.width > GAME_WIDTH) tree.x = GAME_WIDTH - tree.width;
-    if (tree.y < 0) tree.y = 0;
-    if (tree.y + tree.height > GAME_HEIGHT) tree.y = GAME_HEIGHT - tree.height;
 }
 
 
