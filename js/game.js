@@ -188,7 +188,7 @@ function startGame() {
 // Update tree position with delay logic
 function updateTreePosition() {
     // Only update tree position after 1 second has passed
-    if (Date.now() - treeStartTime >= 200) {
+    if (Date.now() - treeStartTime >= 400) {
         const now = Date.now();
 
         // Change direction at intervals
