@@ -4,7 +4,7 @@ const GAME_HEIGHT = 600;
 const PLAYER_SIZE = 60;
 const PRESENT_SIZE = 40;
 const PLAYER_SPEED = 5;
-const GAME_DURATION = 28; // one for every year!
+const GAME_DURATION = 28; // seconds
 const PRESENT_COUNT = 10;
 
 // Game variables
@@ -24,14 +24,14 @@ let tree = {
     width: 50,
     height: 50,
     speed: 10,
-    direction: Math.random() * 2 * Math.PI,
-    directionChangeInterval: 640, 
+    direction: Math.random() * 2 * Math.PI, // Direction in radians (0 to 2 * PI)
+    directionChangeInterval: 680, // Time in ms to change direction
     lastDirectionChange: Date.now(),
     image: new Image()
 };
 
 
-tree.image.src = 'assets/birch-tree.png'; 
+tree.image.src = 'assets/birch-tree.png'; // Set the path to your tree image
 
 
 // Key states
@@ -159,11 +159,13 @@ function startGame() {
     score = 0;
     timer = GAME_DURATION;
 
+    // Hide start screen
     document.getElementById('start-screen').style.display = 'none';
 
     // Create presents
     createPresents();
 
+    // Set the tree start time to the current time when the game starts
     treeStartTime = Date.now();
 
     // Start game loop
@@ -183,8 +185,10 @@ function startGame() {
     updateScore();
 }
 
+// Update tree position with delay logic
 function updateTreePosition() {
-    if (Date.now() - treeStartTime >= 600) {
+    // Only update tree position after 1 second has passed
+    if (Date.now() - treeStartTime >= 200) {
         const now = Date.now();
 
         // Change direction at intervals
@@ -231,9 +235,12 @@ function endGame() {
         highestScore = score;
     }
     
+    // Update the UI to reflect the highest score
+    document.getElementById('highest-score').textContent = `High Score: ${highestScore}`;
+    
     // Show end screen
     document.getElementById('end-screen').style.display = 'flex';
-    document.getElementById('final-score').textContent = `you got ${score} present(s)! yay!!!!!`;
+    document.getElementById('final-score').textContent = `you got ${highestScore} present(s)! yay!!!!!`;
     document.getElementById('final-score').textContent += ` (fuck dem birches)`;
     
     // Add animation to birthday message
@@ -259,6 +266,7 @@ function endGame() {
     // Add confetti
     addConfetti();
 }
+
 
 
 // Add confetti effect
