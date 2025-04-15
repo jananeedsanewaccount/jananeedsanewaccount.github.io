@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walrus Present Collecting Game</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <div id="game-ui">
+            <div id="timer">Time: 28s</div>
+            <div id="score">Score: 0</div>
+            <div id="highest-score">High Score: 0</div> 
+        </div>        
+        <div id="start-screen" class="screen">
+            <h1>🎉the great walrus birthday quest🎉</h1>
+            <p>help our brave walrus collect his birthday presents</p>
+            <p>move with arrow keys or WASD and be veeery careful! </p>
+            <button id="start-button">Start Game</button>
+        </div>
+        <div id="end-screen" class="screen">
+            <div class="popup-content">
+                <h1>happy birthday swimp!</h1>
+                <h2>lurv</h2>
+                <p id="final-score">You collected 0 presents!</p>
+                <button id="restart-button">Play Again</button>
+                <div id="info-icon" class="info-icon" title="Game Information">
+                    ℹ️
+                </div>
+                <div id="info-tooltip" class="info-tooltip">
+                    <p>sorry about the boring landscape but this game is set in the netherlands</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/walrus.js"></script>
+    <script src="assets/present.js"></script>
+    <script src="assets/background.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
