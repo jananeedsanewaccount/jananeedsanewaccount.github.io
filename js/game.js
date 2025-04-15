@@ -4,7 +4,7 @@ const GAME_HEIGHT = 600;
 const PLAYER_SIZE = 60;
 const PRESENT_SIZE = 40;
 const PLAYER_SPEED = 5;
-const GAME_DURATION = 28; // seconds
+const GAME_DURATION = 28; // one for every year!
 const PRESENT_COUNT = 10;
 
 // Game variables
@@ -25,13 +25,13 @@ let tree = {
     height: 50,
     speed: 10,
     direction: Math.random() * 2 * Math.PI,
-    directionChangeInterval: 680, 
+    directionChangeInterval: 640, 
     lastDirectionChange: Date.now(),
     image: new Image()
 };
 
 
-tree.image.src = 'assets/birch-tree.png'; // Set the path to your tree image
+tree.image.src = 'assets/birch-tree.png'; 
 
 
 // Key states
