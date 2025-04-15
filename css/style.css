@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Baloo 2', cursive;
+    background-color: #f0f8ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#game-container {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+}
+
+#gameCanvas {
+    background-color: #e6f7ff;
+    display: block;
+    margin: 0 auto;
+    border: 3px solid #333;
+    border-radius: 10px;
+}
+
+#game-ui {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+#game-ui div {
+    margin-bottom: 5px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(230, 247, 255, 0.9);
+    color: #333;
+    text-align: center;
+    z-index: 10;
+}
+/* Title on the start screen */
+#start-screen h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 3.5rem;  /* Increased size */
+    color: #ff69b4;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Paragraph text on the start screen */
+#start-screen p {
+    font-family: 'Baloo 2', cursive, sans-serif;
+    font-size: 1.5rem; /* Increased size */
+    color: #333;
+    margin: 10px 0;
+    line-height: 1.5;
+    animation: fadeIn 2s ease-in-out;
+}
+
+#end-screen {
+    display: none;
+    background-color: rgba(255, 192, 203, 0.9);
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 20px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+h1 {
+    color: #ff69b4;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #ff1493;
+    margin-top: 0;
+}
+
+#end-screen h1 {
+    font-size: 48px;
+}
+
+#end-screen h2 {
+    font-size: 36px;
+}
+
+#final-score {
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+/* Position the info icon in the bottom-right corner */
+.info-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 2rem;
+    background-color: #ffccff; /* Soft pink background */
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s;
+}
+
+/* Hover effect for info icon */
+.info-icon:hover {
+    background-color: #ff99cc;
+}
+
+/* Tooltip text box */
+.info-tooltip {
+    position: fixed;
+    bottom: 70px; /* Adjust position so it doesn't overlap with icon */
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    display: none; /* Hidden by default */
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    color: #333;
+    max-width: 250px;
+}
+
+/* Show the tooltip when hovering over the icon */
+.info-icon:hover + .info-tooltip {
+    display: block;
+}
